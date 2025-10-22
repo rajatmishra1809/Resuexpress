@@ -1,0 +1,142 @@
+/* --- Global Styles --- */
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* --- Input Field --- */
+.input-field {
+    padding: 0.75rem; /* p-3 */
+    border-width: 1px;
+    border-color: #d1d5db; /* border-gray-300 */
+    border-radius: 0.5rem; /* rounded-lg */
+    transition-property: border-color, box-shadow;
+    transition-duration: 150ms;
+    background-color: white;
+    color: #1f2937; /* text-gray-900 */
+    font-size: 0.875rem; /* text-sm */
+    width: 100%; /* Ensure full width */
+}
+.input-field:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    --tw-ring-color: #3b82f6; /* focus:ring-blue-500 */
+    --tw-border-opacity: 1;
+    border-color: #3b82f6; /* focus:border-blue-500 */
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2); /* simulated ring */
+}
+
+/* --- Primary Button Style (.btn-primary) --- */
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem; /* rounded-lg */
+    padding: 0.75rem 1.5rem; /* px-6 py-3 */
+    font-weight: 600; /* font-semibold */
+    color: white;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1); /* shadow-lg */
+    transition: all 300ms ease-in-out;
+    background: linear-gradient(135deg, #4f46e5, #3b82f6);
+}
+.btn-primary:hover {
+    background: linear-gradient(135deg, #3b82f6, #4f46e5);
+    box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.5), 0 4px 6px -4px rgba(59, 130, 246, 0.5); /* shadow-xl shadow-blue-300/50 */
+}
+
+/* --- Secondary Button Style (.btn-secondary) --- */
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem; /* rounded-lg */
+    padding: 0.5rem 1rem; /* px-4 py-2 */
+    font-weight: 600; /* font-semibold */
+    color: #4b5563; /* text-gray-700 */
+    background-color: white;
+    border-width: 1px;
+    border-color: #d1d5db; /* border-gray-300 */
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* shadow-sm */
+    transition: all 300ms ease-in-out;
+}
+.btn-secondary:hover {
+    background-color: #f3f4f6; /* hover:bg-gray-100 */
+}
+
+/* --- Floating Animation & Element Styles --- */
+@keyframes float {
+    0% { transform: translate(0, 0) rotate(0deg); opacity: 0.9; } 
+    50% { transform: translate(10px, -10px) rotate(2deg); opacity: 1.0; } 
+    100% { transform: translate(0, 0) rotate(0deg); opacity: 0.9; } 
+}
+
+.floating-element {
+    animation: float 14s ease-in-out infinite alternate;
+    filter: blur(0.7px);
+    position: absolute;
+    stroke-width: 1.5;
+    color: #cccccc; /* Explicitly set stroke/color to light grey */
+    fill: transparent; /* Ensure SVGs are outlines, not solid black blocks */
+    transition: color 0.5s;
+}
+
+/* --- Scrollbar Styles (non-standard but kept for UX) --- */
+.custom-scrollbar::-webkit-scrollbar { width: 8px; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background-color: #9ca3af; border-radius: 4px; }
+.custom-scrollbar::-webkit-scrollbar-track { background-color: #e5e7eb; }
+
+/* --- Resume Preview Container (Fixed Overflow) --- */
+.resume-preview-container {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; 
+    height: 60vh; 
+    padding: 0; /* Ensures inner template content scrolls correctly without border overlap */
+}
+
+/* --- Template Selection Button --- */
+.template-btn {
+    padding: 0.75rem; /* p-3 */
+    text-align: center;
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); /* shadow-md */
+    border: 2px solid transparent;
+    transition: all 200ms;
+    background-color: white;
+    color: #1f2937;
+}
+.template-btn:hover {
+    background-color: #f3f4f6; /* hover:bg-gray-100 */
+}
+.template-btn.selected {
+    border-color: #3b82f6; /* border-blue-500 */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 0 0 4px rgba(96, 165, 250, 0.5); /* ring-4 ring-blue-200 */
+}
+
+
+/* --- Template Specific Styles --- */
+
+/* Template 1: Classic Modern */
+.template-1 h1 { font-size: 2rem; font-weight: 700; color: #1f2937; margin-bottom: 0.5rem; }
+.template-1 h2 { font-size: 1.25rem; font-weight: 600; color: #1f2937; margin-top: 1rem; padding-bottom: 0.25rem; border-bottom: 2px solid #3b82f6; }
+
+/* Template 2: Minimalist Tech */
+.template-2 { font-family: 'monospace'; }
+.template-2 h1 { font-size: 2.2rem; font-weight: 300; letter-spacing: 2px; color: #000; }
+.template-2 h2 { font-size: 1.1rem; font-weight: 500; color: #374151; margin-top: 1.5rem; border-left: 4px solid #f97316; padding-left: 8px; }
+.template-2 .contact-info { color: #6b7280; font-size: 0.85rem; }
+
+/* Template 3: Bold and Structured */
+.template-3 { display: grid; grid-template-columns: 1fr; } 
+@media (min-width: 768px) {
+    .template-3 { grid-template-columns: 1fr 3fr; } 
+}
+.template-3 .sidebar { background-color: #1f2937; color: white; padding: 20px; }
+.template-3 .main-content { padding: 20px; }
+
+/* Template 4: Creative/Design Focus */
+.template-4 { border: 1px dashed #d1d5db; padding: 30px; background-color: #f5f3ff; }
+.template-4 h1 { font-family: 'serif'; font-size: 3rem; font-style: italic; color: #9333ea; }
+.template-4 .skill-item { display: inline-block; background: #e9d5ff; color: #7e22ce; padding: 4px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 5px; font-size: 0.8rem; }
+
+/* Template 5: Executive Summary */
+.template-5 { padding: 25px; border-top: 8px solid #10b981; }
+.template-5 .summary-block { margin-bottom: 15px; background-color: #f0fff4; padding: 10px; border-radius: 5px; }
