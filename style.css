@@ -1,378 +1,142 @@
-/* * styles.css: Base styles for the entire website structure.
- * These styles are constant regardless of the theme chosen for the resume preview.
- */
-
-:root {
-    /* Default Website Palette (Used if no theme overrides these) */
-    --base-primary-color: #4f46e5; /* Default Indigo for site buttons/links */
-    --base-secondary-color: #e0e7ff; /* Light Indigo Background */
-    --base-text-color: #1f2937; /* Default Dark Text */
-    --base-border-color: #d1d5db; /* Gray-300 */
-
-    /* Theme-specific variables (These will be overridden by theme files like aesthetic.css or dark.css) */
-    --primary-color: var(--base-primary-color);
-    --secondary-color: var(--base-secondary-color);
-    --accent-pink: #f87171; /* Default Pink Accent */
-    --accent-blue: #3b82f6; /* Default Blue Accent */
-    --background-color: var(--base-secondary-color);
-    --text-color: var(--base-text-color);
-    --border-color: var(--base-border-color);
-    --card-bg: #ffffff;
-    --preview-bg: #f9fafb;
-}
-
+/* --- Global Styles --- */
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    background-color: var(--background-color);
-    color: var(--text-color);
-    margin: 0;
-    transition: background-color 0.3s, color 0.3s;
-    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
 }
 
-/* --- Layout and Structure --- */
-.main-container {
-    display: flex;
-    max-width: 1400px;
-    margin: 0 auto;
-    min-height: 100vh;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+/* --- Input Field --- */
+.input-field {
+    padding: 0.75rem; /* p-3 */
+    border-width: 1px;
+    border-color: #d1d5db; /* border-gray-300 */
+    border-radius: 0.5rem; /* rounded-lg */
+    transition-property: border-color, box-shadow;
+    transition-duration: 150ms;
+    background-color: white;
+    color: #1f2937; /* text-gray-900 */
+    font-size: 0.875rem; /* text-sm */
+    width: 100%; /* Ensure full width */
+}
+.input-field:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    --tw-ring-color: #3b82f6; /* focus:ring-blue-500 */
+    --tw-border-opacity: 1;
+    border-color: #3b82f6; /* focus:border-blue-500 */
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2); /* simulated ring */
 }
 
-.form-section {
-    width: 60%;
-    padding: 40px;
-    background-color: var(--card-bg);
-    border-right: 1px solid var(--border-color);
-    transition: background-color 0.3s, border-color 0.3s;
-}
-
-.preview-section {
-    width: 40%;
-    padding: 40px;
-    background-color: var(--preview-bg);
-    transition: background-color 0.3s, color 0.3s;
-}
-
-/* --- Form Elements --- */
-h2 {
-    color: var(--primary-color); 
-    font-size: 1.8em;
-    margin-bottom: 25px;
-    text-align: center;
-}
-
-label {
-    display: block;
-    margin-top: 15px;
-    font-weight: 600;
-    color: var(--text-color);
-}
-
-input, textarea, select {
-    width: 100%;
-    padding: 12px;
-    margin-top: 8px;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    box-sizing: border-box;
-    font-size: 1em;
-    background-color: var(--background-color); 
-    color: var(--text-color);
-    transition: all 0.3s ease;
-}
-
-input:focus, textarea:focus, select:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 5px rgba(79, 70, 229, 0.3); /* Based on base primary color */
-    outline: none;
-}
-
-/* --- Buttons and Navigation --- */
+/* --- Primary Button Style (.btn-primary) --- */
 .btn-primary {
-    background-color: var(--primary-color);
-}
-
-.btn-secondary {
-    background-color: var(--accent-blue);
-}
-
-.next-btn, .prev-btn, .add-more {
-    background-color: var(--primary-color);
-}
-
-.next-btn:hover, .add-more:hover, #downloadBtn:hover {
-    background-color: var(--secondary-color);
-}
-
-.prev-btn {
-    background-color: var(--accent-blue);
-}
-
-.prev-btn:hover {
-    background-color: var(--accent-pink);
-}
-
-/* --- Progress Bar --- */
-.progress-bar-container {
-    height: 8px;
-    background-color: var(--border-color);
-    border-radius: 4px;
-    margin-bottom: 30px;
-}
-.progress-bar {
-    height: 100%;
-    width: 0%;
-    background-color: var(--primary-color);
-    border-radius: 4px;
-    transition: width 0.4s ease-in-out;
-}
-
-/* --- Theme Toggle --- */
-.theme-toggle-btn {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 1000;
-    background-color: var(--secondary-color);
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    font-size: 1em;
-    transition: background-color 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-.theme-toggle-btn:hover {
-    background-color: var(--primary-color);
-}
-
-/* --- Resume Preview Styles (Base Structure) --- */
-#preview-content, #final-preview {
-    padding: 20px;
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
-    background-color: var(--preview-bg);
-    color: var(--text-color);
-    transition: all 0.3s;
-}
-.resume-section {
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 1px dashed var(--border-color);
-}
-.resume-section h3 {
-    color: var(--primary-color);
-    font-size: 1.5em;
-    margin-top: 0;
-}
-.resume-section h4 {
-    color: var(--accent-blue);
-    border-bottom: 2px solid var(--accent-blue);
-    display: inline-block;
-    padding-bottom: 3px;
-    font-size: 1.1em;
-}
-
-/* --- Home Page --- */
-body:not(.main-container) {
-    display: flex;
-    justify-content: center;
+    display: inline-flex;
     align-items: center;
-    min-height: 100vh;
-    flex-direction: column;
+    justify-content: center;
+    border-radius: 0.5rem; /* rounded-lg */
+    padding: 0.75rem 1.5rem; /* px-6 py-3 */
+    font-weight: 600; /* font-semibold */
+    color: white;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1); /* shadow-lg */
+    transition: all 300ms ease-in-out;
+    background: linear-gradient(135deg, #4f46e5, #3b82f6);
 }
-#home-container {
+.btn-primary:hover {
+    background: linear-gradient(135deg, #3b82f6, #4f46e5);
+    box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.5), 0 4px 6px -4px rgba(59, 130, 246, 0.5); /* shadow-xl shadow-blue-300/50 */
+}
+
+/* --- Secondary Button Style (.btn-secondary) --- */
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem; /* rounded-lg */
+    padding: 0.5rem 1rem; /* px-4 py-2 */
+    font-weight: 600; /* font-semibold */
+    color: #4b5563; /* text-gray-700 */
+    background-color: white;
+    border-width: 1px;
+    border-color: #d1d5db; /* border-gray-300 */
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* shadow-sm */
+    transition: all 300ms ease-in-out;
+}
+.btn-secondary:hover {
+    background-color: #f3f4f6; /* hover:bg-gray-100 */
+}
+
+/* --- Floating Animation & Element Styles --- */
+@keyframes float {
+    0% { transform: translate(0, 0) rotate(0deg); opacity: 0.9; } 
+    50% { transform: translate(10px, -10px) rotate(2deg); opacity: 1.0; } 
+    100% { transform: translate(0, 0) rotate(0deg); opacity: 0.9; } 
+}
+
+.floating-element {
+    animation: float 14s ease-in-out infinite alternate;
+    filter: blur(0.7px);
+    position: absolute;
+    stroke-width: 1.5;
+    color: #cccccc; /* Explicitly set stroke/color to light grey */
+    fill: transparent; /* Ensure SVGs are outlines, not solid black blocks */
+    transition: color 0.5s;
+}
+
+/* --- Scrollbar Styles (non-standard but kept for UX) --- */
+.custom-scrollbar::-webkit-scrollbar { width: 8px; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background-color: #9ca3af; border-radius: 4px; }
+.custom-scrollbar::-webkit-scrollbar-track { background-color: #e5e7eb; }
+
+/* --- Resume Preview Container (Fixed Overflow) --- */
+.resume-preview-container {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; 
+    height: 60vh; 
+    padding: 0; /* Ensures inner template content scrolls correctly without border overlap */
+}
+
+/* --- Template Selection Button --- */
+.template-btn {
+    padding: 0.75rem; /* p-3 */
     text-align: center;
-    opacity: 1;
-    transition: opacity 1s ease-in-out;
-    padding: 60px 80px;
-    background-color: var(--card-bg);
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); /* shadow-md */
+    border: 2px solid transparent;
+    transition: all 200ms;
+    background-color: white;
+    color: #1f2937;
 }
-#home-container h1 {
-    font-size: 3em;
-    color: var(--primary-color);
-    margin-bottom: 20px;
+.template-btn:hover {
+    background-color: #f3f4f6; /* hover:bg-gray-100 */
+}
+.template-btn.selected {
+    border-color: #3b82f6; /* border-blue-500 */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 0 0 4px rgba(96, 165, 250, 0.5); /* ring-4 ring-blue-200 */
 }
 
-/* --- Template Specific Base Styles (for Resume Preview) --- */
-/* These are placeholders that theme files will enhance/color */
-.template-1 h1 { font-size: 2rem; font-weight: 700; color: var(--text-color); margin-bottom: 0.5rem; }
-.template-1 h2 { font-size: 1.25rem; font-weight: 600; color: var(--primary-color); margin-top: 1rem; padding-bottom: 0.25rem; border-bottom: 2px solid var(--accent-blue); }
-.template-2 h1 { font-size: 2.2rem; font-weight: 300; letter-spacing: 2px; color: var(--text-color); }
-.template-2 h2 { font-size: 1.1rem; font-weight: 500; color: var(--accent-blue); margin-top: 1.5rem; border-left: 4px solid var(--primary-color); padding-left: 8px; }
-```eof
 
-### 2. Updated Theme CSS Files (Color Overrides Only)
+/* --- Template Specific Styles --- */
 
-These files now define colors based on the class present on the `<body>` tag.
+/* Template 1: Classic Modern */
+.template-1 h1 { font-size: 2rem; font-weight: 700; color: #1f2937; margin-bottom: 0.5rem; }
+.template-1 h2 { font-size: 1.25rem; font-weight: 600; color: #1f2937; margin-top: 1rem; padding-bottom: 0.25rem; border-bottom: 2px solid #3b82f6; }
 
-**`css/aesthetic.css`** (Light Theme)
-```css:Aesthetic Resume Theme:css/aesthetic.css
-.aesthetic {
-    /* --- Resume Accent Colors (Pink/Amethyst Aesthetic) --- */
-    --primary-color: #A3A1F7; /* Soft Amethyst */
-    --secondary-color: #B5B2FF;
-    --accent-pink: #FFC0CB;
-    --accent-blue: #ADD8E6; /* Light Blue */
+/* Template 2: Minimalist Tech */
+.template-2 { font-family: 'monospace'; }
+.template-2 h1 { font-size: 2.2rem; font-weight: 300; letter-spacing: 2px; color: #000; }
+.template-2 h2 { font-size: 1.1rem; font-weight: 500; color: #374151; margin-top: 1.5rem; border-left: 4px solid #f97316; padding-left: 8px; }
+.template-2 .contact-info { color: #6b7280; font-size: 0.85rem; }
 
-    /* --- Background/Card Overrides for Light Theme --- */
-    --background-color: #F0F2F5;
-    --card-bg: #ffffff;
-    --preview-bg: #f9f9f9;
-    --border-color: #ddd;
+/* Template 3: Bold and Structured */
+.template-3 { display: grid; grid-template-columns: 1fr; } 
+@media (min-width: 768px) {
+    .template-3 { grid-template-columns: 1fr 3fr; } 
 }
-```eof
+.template-3 .sidebar { background-color: #1f2937; color: white; padding: 20px; }
+.template-3 .main-content { padding: 20px; }
 
-**`css/dark.css`** (Dark Theme)
-```css:Dark Resume Theme:css/dark.css
-.dark {
-    /* --- Resume Accent Colors (Violet/Blue Dark Aesthetic) --- */
-    --primary-color: #9370DB; /* Purple */
-    --secondary-color: #A3A1F7;
-    --accent-pink: #DDA0DD;
-    --accent-blue: #4682B4; /* Steel Blue */
+/* Template 4: Creative/Design Focus */
+.template-4 { border: 1px dashed #d1d5db; padding: 30px; background-color: #f5f3ff; }
+.template-4 h1 { font-family: 'serif'; font-size: 3rem; font-style: italic; color: #9333ea; }
+.template-4 .skill-item { display: inline-block; background: #e9d5ff; color: #7e22ce; padding: 4px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 5px; font-size: 0.8rem; }
 
-    /* --- Background/Card Overrides for Dark Theme --- */
-    --background-color: #121212;
-    --text-color: #f0f0f0;
-    --card-bg: #1e1e1e;
-    --preview-bg: #282828;
-    --border-color: #555;
-
-    /* Override form input styles specifically for dark mode */
-    input, textarea, select {
-        background-color: #333;
-        border-color: #444;
-        color: var(--text-color);
-    }
-}
-```eof
-
-*(The other three theme files (`minimalist.css`, `professional.css`, `vintage.css`) must be updated similarly to only define colors within a class wrapper, like `.minimalist { ... }`.)*
-
-### 3. Updated HTML Files (Linking Both CSS Files)
-
-Every HTML page now links `styles.css` **first**, followed by the thematic link.
-
-**`home.html`** (Example of required update)
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resuexpress - Modern Resume Builder</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="styles.css"> 
-    <link rel="stylesheet" id="theme-link" href="css/aesthetic.css"> 
-</head>
-<body class="aesthetic"> <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        </div>
-
-    <main class="relative z-10 p-4 md:p-8">
-        <header class="text-center mb-6 sm:mb-8 flex justify-between items-center max-w-7xl mx-auto">
-            <div class="w-10"></div> <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tighter" style="color: var(--primary-color);">Resu<span style="color: var(--text-color);">express</span></h1>
-            <div class="w-10"></div>
-        </header>
-
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-3 gap-8">
-            <div id="form-container" class="lg:col-span-2 bg-white p-6 md:p-10 rounded-xl shadow-2xl overflow-y-auto" style="max-height: 85vh; background-color: var(--card-bg); color: var(--text-color);">
-                
-                <div class="mb-8">
-                    <div id="progress-bar-container" class="w-full bg-gray-200 rounded-full h-2.5 mb-2">
-                        <div id="progress-bar" class="bg-blue-600 h-2.5 rounded-full transition-all duration-500 ease-in-out" style="width: 0%;"></div>
-                    </div>
-                    <p class="text-sm text-gray-500 font-medium">Step <span id="current-step-display">1</span> of 5: <span id="step-title">Personal Information</span></p>
-                </div>
-
-                <form id="resume-form" onsubmit="event.preventDefault()">
-                    <div id="step-1" class="step-content">
-                        <h2 class="text-2xl sm:text-3xl font-bold mb-6">1. Personal Details</h2>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <input type="text" id="name" data-field="name" placeholder="Full Name" required class="input-field">
-                            <input type="email" id="email" data-field="email" placeholder="Email Address" required class="input-field">
-                            <input type="tel" id="phone" data-field="phone" placeholder="Phone Number" class="input-field">
-                            <input type="url" id="linkedin" data-field="linkedin" placeholder="LinkedIn Profile URL" class="input-field md:col-span-2">
-                            <textarea id="summary" data-field="summary" placeholder="Professional Summary (2-3 sentences)" rows="4" required class="input-field md:col-span-2"></textarea>
-                        </div>
-                    </div>
-                    <div id="step-2" class="step-content hidden">
-                        <h2 class="text-2xl sm:text-3xl font-bold mb-6">2. Work Experience</h2>
-                        <div id="experience-list"></div>
-                        <button type="button" onclick="window.addExperience()" class="btn-secondary mt-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-                            Add Position
-                        </button>
-                    </div>
-
-                    <div id="step-3" class="step-content hidden">
-                        <h2 class="text-2xl sm:text-3xl font-bold mb-6">3. Education</h2>
-                        <div id="education-list"></div>
-                        <button type="button" onclick="window.addEducation()" class="btn-secondary mt-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-                            Add Degree
-                        </button>
-                    </div>
-
-                    <div id="step-4" class="step-content hidden">
-                        <h2 class="text-2xl sm:text-3xl font-bold mb-6">4. Skills & Projects</h2>
-                      
-                        <h3 class="text-xl font-semibold mt-6 mb-3">Key Skills (Comma Separated)</h3>
-                        <input type="text" id="skills" data-field="skills" placeholder="e.g., JavaScript, Tailwind CSS, Project Management" class="input-field">
-
-                        <h3 class="text-xl font-semibold mt-8 mb-3">Notable Projects</h3>
-                        <div id="project-list"></div>
-                        <button type="button" onclick="window.addProject()" class="btn-secondary mt-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-                            Add Project
-                        </button>
-                    </div>
-
-                    <div id="step-5" class="step-content hidden">
-                        <h2 class="text-2xl sm:text-3xl font-bold mb-6">5. Select Template</h2>
-                        <p class="text-lg text-gray-600 mb-6">Choose one of the five modern templates below. The preview will update immediately.</p>
-                        
-                        <div class="grid grid-cols-2 md:grid-cols-5 gap-4" id="template-selection">
-                            </div>
-
-                        <div class="mt-10 p-6 bg-blue-50 border-l-4 border-blue-500 rounded-lg">
-                            <h3 class="text-xl sm:text-2xl font-semibold text-blue-800">Final Step Complete!</h3>
-                            <p class="mt-2 text-blue-700">Your data is automatically saved to your browser. You can download your resume now.</p>
-                        </div>
-                    </div>
-
-                    <div class="flex justify-between mt-10 pt-6 border-t border-gray-100">
-                        <button type="button" id="prev-btn" onclick="window.navigateStep(-1)" class="btn-secondary invisible">Previous</button>
-                        <button type="button" id="next-btn" onclick="window.navigateStep(1)" class="btn-primary">Next Step</button>
-                        <button type="button" id="download-btn" onclick="window.downloadResume()" class="btn-primary hidden">Download Resume</button>
-                    </div>
-                </form>
-
-            </div>
-
-            <div class="lg:col-span-1">
-                <div class="sticky top-8 bg-white p-4 md:p-6 rounded-xl shadow-2xl" style="background-color: var(--card-bg);">
-                    <h2 class="text-xl sm:text-2xl font-bold mb-4">Live Preview: <span id="current-template-name">Classic Modern</span></h2>
-                    <div id="resume-preview" class="resume-preview-container">
-                        <p class="text-gray-500 text-center py-10">Fill in your details to see your professional resume take shape here.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <footer class="absolute bottom-0 left-0 right-0 p-3 text-center text-xs z-20" style="color: var(--text-color); background-color: var(--card-bg); border-top: 1px solid var(--border-color);">
-        Crafted with ❤️ by Rajat | 
-        <a href="https://github.com/rajatmishra1809" target="_blank" class="hover:text-blue-500" style="color: var(--primary-color);">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="inline mb-0.5"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.6.111.82-.258.82-.577 0-.285-.01-1.025-.015-2.005-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.731 0.083-.731 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.304.762-1.605-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23 0.957-.266 1.983-.399 3.003-.404 1.02.005 2.046.138 3.003.404 2.291-1.552 3.298-1.23 3.298-1.23.653 1.653.242 2.873.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.607-.015 2.896-.015 3.296 0 .319.214.694.827.576C20.565 22.173 24 17.673 24 12c0-6.627-5.373-12-12-12z"/>
-</svg> Rajat</a>
-    </footer>
-    <script src="templates.js"></script>
-    <script src="script.js"></script>
-</body>
-</html>
+/* Template 5: Executive Summary */
+.template-5 { padding: 25px; border-top: 8px solid #10b981; }
+.template-5 .summary-block { margin-bottom: 15px; background-color: #f0fff4; padding: 10px; border-radius: 5px; }
