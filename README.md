@@ -12,7 +12,7 @@ Whether you're on your phone or desktop, **ResuExpress** makes it simple and ele
 ✅ **Instant Preview** — See your resume take shape in real time.  
 ✅ **One-Click Download** — Generate your resume instantly as an image (not PDF).  
 ✅ **Dual Platform** — Available as a **Web App (Vercel)** and **Android App (APK)**.  
-✅ **Dark & Light Mode** — Aesthetic and eye-friendly design themes.  
+✅ **Light Mode** — Aesthetic and eye-friendly design themes.  
 ✅ **Save & Continue Later** — Resume your progress anytime.  
 
 ---
