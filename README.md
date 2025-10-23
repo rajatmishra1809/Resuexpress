@@ -69,7 +69,7 @@ If you want to run ResuExpress locally:
 
 ```bash
 # Clone this repository
-git clone https://github.com/yourusername/resuexpress.git
+git clone https://github.com/rajatmishra1809/Resuexpress.git
 
 # Navigate to the project folder
 cd resuexpress
